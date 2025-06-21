@@ -285,103 +285,26 @@ function populateReasons() {
     });
 }
 
-// Interactive messages
-const loveMessages = [
-    "I love you more than words can express, Laila! 💕",
-    "You are my everything, my heart beats only for you! 💖",
-    "Every moment with you is a gift I treasure! 💝",
-    "You make my world complete, Laila! 💗",
-    "I'm so lucky to have you in my life! 💓",
-    "You are my dream come true! 💕",
-    "I love you more each day! 💖",
-    "You are my soulmate, my everything! 💝",
-    "I can't imagine life without you! 💗",
-    "You are my perfect match! 💓"
-];
-
-const sorryMessages = [
-    "I'm so sorry for hurting you, Laila. I never meant to cause you pain. 😔",
-    "I take full responsibility for my mistakes. I'm working to be better for you. 💔",
-    "I'm sorry for not being the person you deserved. I promise to change. 😢",
-    "I miss you so much. I'm sorry for everything I did wrong. 💔",
-    "I'm sorry for taking you for granted. You deserve so much better. 😔",
-    "I'm sorry for not listening to you. I promise to be more attentive. 💔",
-    "I'm sorry for being selfish. You are my priority now. 😢",
-    "I'm sorry for not communicating properly. I want to be open with you. 💔",
-    "I'm sorry for not being there when you needed me. I'm here now. 😔",
-    "I'm sorry for everything. Please give me another chance to love you right. 💔"
-];
-
-// Interactive buttons
-function setupInteractiveButtons() {
-    const loveButton = document.getElementById('loveButton');
-    const sorryButton = document.getElementById('sorryButton');
-    const messageDisplay = document.getElementById('messageDisplay');
-    
-    loveButton.addEventListener('click', () => {
-        const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
-        messageDisplay.textContent = randomMessage;
-        messageDisplay.style.animation = 'none';
-        setTimeout(() => {
-            messageDisplay.style.animation = 'fadeIn 0.5s ease-in';
-        }, 10);
-    });
-    
-    sorryButton.addEventListener('click', () => {
-        const randomMessage = sorryMessages[Math.floor(Math.random() * sorryMessages.length)];
-        messageDisplay.textContent = randomMessage;
-        messageDisplay.style.animation = 'none';
-        setTimeout(() => {
-            messageDisplay.style.animation = 'fadeIn 0.5s ease-in';
-        }, 10);
-    });
-}
-
-// Countdown timer
-function updateCountdown() {
-    // Set the date when you first met Laila (October 5, 2023)
-    const firstMetDate = new Date(2023, 9, 5, 0, 0, 0); // Month is 0-indexed, so 9 = October
-    const now = new Date();
-    const timeDiff = now - firstMetDate;
-    
-    // Make sure we have a positive time difference
-    if (timeDiff > 0) {
-        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-        
-        // Update the display elements
-        const daysElement = document.getElementById('days');
-        const hoursElement = document.getElementById('hours');
-        const minutesElement = document.getElementById('minutes');
-        const secondsElement = document.getElementById('seconds');
-        
-        if (daysElement) daysElement.textContent = days;
-        if (hoursElement) hoursElement.textContent = hours;
-        if (minutesElement) minutesElement.textContent = minutes;
-        if (secondsElement) secondsElement.textContent = seconds;
-    }
-}
-
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', function() {
     createFloatingHearts();
     createSparkles();
     populateReasons();
-    setupInteractiveButtons();
-    
-    // Update countdown every second
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // Add fade-in animation for message display
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    `;
-    document.head.appendChild(style);
-}); 
+    setupOpenWhenButton();
+});
+
+function setupOpenWhenButton() {
+    const openButton = document.getElementById('openSadButton');
+    const message = document.getElementById('sadMessage');
+
+    if (openButton && message) {
+        openButton.addEventListener('click', () => {
+            // Toggle the display of the message
+            if (message.style.display === 'block') {
+                message.style.display = 'none';
+            } else {
+                message.style.display = 'block';
+            }
+        });
+    }
+} 

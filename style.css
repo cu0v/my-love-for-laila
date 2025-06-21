@@ -316,85 +316,61 @@ body {
     font-size: 0.95rem;
 }
 
-.interactive-section {
+.open-when-section {
     margin-bottom: 60px;
+    text-align: center;
 }
 
-.interactive-container {
-    text-align: center;
+.open-when-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
     background: rgba(255, 255, 255, 0.9);
-    padding: 35px;
     border-radius: 20px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
-.love-button, .sorry-button {
-    background: linear-gradient(45deg, #e8b4b8, #d4a5a5);
+.open-when-button {
+    background: linear-gradient(45deg, #8b5a96, #6b5b95);
     color: white;
     border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    border-radius: 25px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     font-family: 'Playfair Display', serif;
-    margin: 0 10px;
 }
 
-.love-button:hover, .sorry-button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+.open-when-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
-.message-display {
-    margin-top: 25px;
-    padding: 20px;
+.open-when-message {
+    display: none; /* Hidden by default */
+    padding: 30px;
+    margin-top: 30px;
     background: rgba(232, 180, 184, 0.1);
     border-radius: 15px;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: #8b5a96;
-    font-weight: 500;
+    border-left: 5px solid #8b5a96;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-.countdown-section {
-    margin-bottom: 60px;
-}
-
-.countdown-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.countdown-item {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    min-width: 100px;
-}
-
-.countdown-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #8b5a96;
-    margin-bottom: 5px;
-}
-
-.countdown-label {
-    font-size: 0.9rem;
-    color: #6b5b95;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .footer {
@@ -433,18 +409,5 @@ body {
     
     .reasons-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .countdown-container {
-        gap: 15px;
-    }
-    
-    .countdown-item {
-        min-width: 80px;
-        padding: 15px;
-    }
-    
-    .countdown-number {
-        font-size: 1.5rem;
     }
 } 
